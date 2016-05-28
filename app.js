@@ -16,20 +16,25 @@ Vue.component("todos", {
 	},
 	methods: {
 			addTodo: function(){
-					var item = this.value;
-					if(item.trim() !== ""){
-							this.todos.push({task: item, completed: false});
-							localStorage.setItem("todos", JSON.stringify(this.todos));
-							this.value = ""
-					}
+				var item = this.value;
+				if(item.trim() !== ""){
+						this.todos.push({task: item, completed: false});
+						localStorage.setItem("todos", JSON.stringify(this.todos));
+						this.value = ""
+				}
 			},
 			removeTodo: function($index){
-					this.todos.splice($index, 1);
-					localStorage.setItem("todos", JSON.stringify(this.todos));
+				this.todos.splice($index, 1);
+				localStorage.setItem("todos", JSON.stringify(this.todos));
 			},
 			toggleStatus: function(todo){
 				todo.completed = !todo.completed;
 				localStorage.setItem("todos", JSON.stringify(this.todos))
+			},
+			archiveAll: function(){
+				this.todos = this.todos.filter(function(todo) {
+					return !todo.completed
+				})
 			}
 	}
 })
