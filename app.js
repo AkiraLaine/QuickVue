@@ -11,8 +11,7 @@ Vue.component("todos", {
 	data: function() {
 		return {
 			value: "",
-			todos: JSON.parse(localStorage.getItem("todos")),
-			hover: false
+			todos: JSON.parse(localStorage.getItem("todos"))
 		}
 	},
 	methods: {

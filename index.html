@@ -17,7 +17,7 @@
       <input placeholder="Enter new todo here..." v-model="value" @keyup.enter="addTodo">
       <ul>
         <li v-for="todo in todos">
-          <span :class="{'completed': todo.completed, 'no-select': true, 'hover': hover}" @click="toggleStatus(todo)">{{todo.task}}</span>
+          <span :class="{'completed': todo.completed, 'no-select': true}" @click="toggleStatus(todo)">{{todo.task}}</span>
           <button @click="removeTodo($index)">X</button>
         </li>
       </ul>
