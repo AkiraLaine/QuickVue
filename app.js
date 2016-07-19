@@ -1,4 +1,5 @@
 var initialData = [{task: "Learn VueJS", completed: false}]
+var flag = false;
 
 if(window.localStorage){
 	localStorage.setItem("todos", localStorage.getItem("todos") || JSON.stringify(initialData));
@@ -35,6 +36,19 @@ Vue.component("todos", {
 			this.todos = this.todos.filter(function(todo) {
 				return !todo.completed
 			})
+		}
+	},
+	computed: {
+		checkIfArchived: function() {
+			flag = false
+			for(var i in this.todos) {
+				if(this.todos[i].completed === true) flag = true
+				if(flag) continue;
+			}  
+			
+			console.log(flag)
+
+			if(this.todos.length !== 0 && flag) return true;
 		}
 	}
 })

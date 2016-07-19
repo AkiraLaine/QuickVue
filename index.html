@@ -21,8 +21,7 @@
           <button @click="removeTodo($index)">X</button>
         </li>
       </ul>
-      <a v-show="todos.length !== 0" @click="archiveAll">Archive all completed</a>
-      <span v-else><em>You have nothing on your todo list.</em></span>
+      <a v-show="checkIfArchived" @click="archiveAll">Archive all completed</a>
     </template>
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.20/vue.js"></script>
