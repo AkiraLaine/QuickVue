@@ -11,31 +11,32 @@ Vue.component("todos", {
 	data: function() {
 		return {
 			value: "",
-			todos: JSON.parse(localStorage.getItem("todos"))
+			todos: JSON.parse(localStorage.getItem("todos")),
+			hover: false
 		}
 	},
 	methods: {
-			addTodo: function(){
-				var item = this.value;
-				if(item.trim() !== ""){
-						this.todos.push({task: item, completed: false});
-						localStorage.setItem("todos", JSON.stringify(this.todos));
-						this.value = ""
-				}
-			},
-			removeTodo: function($index){
-				this.todos.splice($index, 1);
+		addTodo: function(){
+			var item = this.value;
+			if(item.trim() !== ""){
+				this.todos.push({task: item, completed: false});
 				localStorage.setItem("todos", JSON.stringify(this.todos));
-			},
-			toggleStatus: function(todo){
-				todo.completed = !todo.completed;
-				localStorage.setItem("todos", JSON.stringify(this.todos))
-			},
-			archiveAll: function(){
-				this.todos = this.todos.filter(function(todo) {
-					return !todo.completed
-				})
+				this.value = ""
 			}
+		},
+		removeTodo: function($index){
+			this.todos.splice($index, 1);
+			localStorage.setItem("todos", JSON.stringify(this.todos));
+		},
+		toggleStatus: function(todo){
+			todo.completed = !todo.completed;
+			localStorage.setItem("todos", JSON.stringify(this.todos))
+		},
+		archiveAll: function(){
+			this.todos = this.todos.filter(function(todo) {
+				return !todo.completed
+			})
+		}
 	}
 })
 

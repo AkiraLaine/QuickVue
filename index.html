@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Quick Vue</title>
-        <link href='https://fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css'>
-        <link href="app.css" rel="stylesheet">
-    </head>
-    <body>
-        <div id="app">
-            <h1>Quick Vue</h1>
-            <small>A simple app to create todo lists on the fly</small>
-            <todos></todos>
-        </div>
+  <head>
+    <meta charset="utf-8">
+    <title>Quick Vue</title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css'>
+    <link href="app.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+        <h1>Quick Vue</h1>
+        <small>A simple app to create todo lists on the fly</small>
+        <todos></todos>
+    </div>
 
-        <template id="app-template">
-          <input placeholder="Enter new todo here..." v-model="value" @keyup.enter="addTodo">
-          <ul>
-              <li v-for="todo in todos">
-                <span :class="{'completed': todo.completed, 'no-select': true}" @click="toggleStatus(todo)">{{todo.task}}</span>
-                <button v-on:click="removeTodo($index)">X</button>
-              </li>
-          </ul>
-          <a v-show="todos.length !== 0" @click="archiveAll">Archive all completed</a>
-          <span v-else><em>You have nothing on your todo list.</em></span>
-        </template>
+    <template id="app-template">
+      <input placeholder="Enter new todo here..." v-model="value" @keyup.enter="addTodo">
+      <ul>
+        <li v-for="todo in todos">
+          <span :class="{'completed': todo.completed, 'no-select': true, 'hover': hover}" @click="toggleStatus(todo)">{{todo.task}}</span>
+          <button @click="removeTodo($index)">X</button>
+        </li>
+      </ul>
+      <a v-show="todos.length !== 0" @click="archiveAll">Archive all completed</a>
+      <span v-else><em>You have nothing on your todo list.</em></span>
+    </template>
 
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.20/vue.js"></script>
-        <script src="app.js"></script>
-    </body>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.20/vue.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
