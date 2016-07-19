@@ -28,6 +28,11 @@ input {
   padding: 5px;
   font-size: 1.2em;
   margin: 20px auto;
+  text-align: center;
+}
+
+input:focus::-webkit-input-placeholder { 
+  color: transparent; 
 }
 
 ul {
@@ -40,12 +45,12 @@ li {
   font-size: 1.3em;
   padding: 5px;
   transition: 0.5s;
-  cursor: pointer;
 }
 
 li span {
   width: 50%;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 button {
